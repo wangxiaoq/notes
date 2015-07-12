@@ -1,0 +1,14 @@
+设置代理翻墙
+=================================
+1. sshuser是代理机器上的用户名，sshhost时代理服务器的IP
+ssh -qTfnN -D 5129 sshuser@sshhost
+
+2. firefox安装autoproxy插件，选择tools->addon就可以选择安装的插件了
+
+3. 安装完成后，重启浏览器，就可以看到浏览器的右上角有一个“福”，
+   点击下拉菜单，选择Default proxy -> ssh -D, Global mode,
+   选择preferences -> Proxy Server -> edit proxy server
+   修改 ssh -D 的端口为5129，确定就可以了
+
+
+
