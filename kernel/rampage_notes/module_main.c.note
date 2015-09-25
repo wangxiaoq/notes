@@ -1,0 +1,40 @@
+module/main.c
+=============
+
+int phys_mem_major = PHYS_MEM_MAJOR;
+int phys_mem_devs = 1; /* number of bare phys_mem devices */
+采用了ldd中的代码风格，设备的主设备号既可以动态分配，又可以通过
+修改PHYS_MEM_MAJOR指定。该设备只有一个从设备。
+
+static struct class *device_class;
+Linux驱动中的class类的作用是什么？
+class类可以自动创建/dev下的设备节点。以后有空再慢慢补充吧。
+
+struct kmem_cache *session_mem_cache;
+创建slab高速缓存，不过这里的命名好像有点不符合内核的风格，应该命
+名为session_cachep。
+
+void free_page_stati(struct phys_mem_session* session) {
+该函数的作用就是释放session->frame_stati中所有的frame_stati，并
+且释放frame_stati中获得的页。phys_mem_session结构体如下：
+struct phys_mem_session {
+         struct session_status status;
+         unsigned long long    session_id;
+         int vmas;                              /* active mappings */
+         struct phys_mem_dev *  device;
+         struct semaphore       sem;            /* Session Lock */
+         unsigned long          num_frame_stati;     /* The number of frame stati in status */
+         struct phys_mem_frame_status* frame_stati; /* An array with num_status items */
+};
+从这个结构体中可以看到最重要的两个域：frame_stati和num_frame_stati。
+对于free_page_stati先不要深究，它的作用就是释放session->frame_stati数组，
+并将每个数组元素中对应的页框归还给内核。
+
+static void phys_mem_setup_cdev(struct phys_mem_dev *dev, int index) {
+初始化字符设备。可以根据ldd3了解详细信息。
+
+int phys_mem_init(void) {
+初始化模块，给每一个phys_mem_devices成员创建一个对应的从字符设备。
+
+void phys_mem_cleanup(void) {
+模块的清除工作。
