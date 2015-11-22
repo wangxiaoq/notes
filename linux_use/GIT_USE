@@ -15,3 +15,10 @@ git 的使用
 
 3. 查看某个文件的详细信息:
    git log -p filename
+
+===================
+* git 查询当前的用户和邮箱，使用命令：
+	git config --list
+
+* git 创建共有仓库时，使用命令：
+	git init --bare --share
