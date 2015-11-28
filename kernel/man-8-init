@@ -1,0 +1,62 @@
+man 8 init
+
+王小强	2015.11.27
+==================
+
+这个文档是从man 8 init中翻译过来的。
+
+NAME
+       init, telinit - process control initialization
+
+SYNOPSIS
+       /sbin/init [ -a ] [ -s ] [ -b ] [ -z xxx ] [ 0123456Ss ]
+       /sbin/telinit [ -t SECONDS ] [ 0123456sSQqabcUu ]
+       /sbin/telinit [ -e VAR[=VAL] ]
+
+DESCRIPTION
+Init
+	Init是所有用户态进程的祖先，它从一个脚本中读取信息并创建进程，
+这个脚本是/etc/inittab。根据/etc/inittab中指定用户登录的每一行，来
+创建相应的gettys。并且管理特定操作系统的自治的程序。
+
+RUNLEVELS
+	runlevel是一个系统软件配置，它允许一个选中的组的进程存在。在每
+一个runlevel中，由init创建的进程是在/etc/inittab中定义的。Init可以
+处于8个runlevel中的一个 -- 0-6 和 S 。init的runlevel的改变是由一个
+具有超级用户权限的用户，使用命令telinit来向init发送一个合适的信号，
+来告诉init应该切换到哪一个runlevel。
+
+	runlevel中，0，1，6和S是保留的，0是关机，6是重启，S是在启动的时
+候用来初始化系统，而1是从多用户级别切换到单用户级别。当开始进入S或1
+runlevel时，系统就开始进入单用户模式。
+	
+	在通过S runlevel之后，系统就进入到了2-5多用户runlevel中的一个，除
+非系统出了某些问题，管理员需要进入到单用户模式，进行一些维护工作，然
+后重启系统。
+	
+	runlevel 7-9也是有效的，尽管在文档中没有写出。由于传统的原因，UNIX
+变体没有使用7-9 。
+	
+	S 和 s是同一个运行级别。
+
+BOOTING
+	作为内核启动序列的最后一个步骤--调用init进程，init进程将会查看
+/etc/inittab中的initdefault表项，initdefault表项定义了系统最初的
+runlevel 。如果没有这个initdefault表项，或者压根就没有/etc/inittab
+这个文件，那么在系统console中必须进入一个runlevel 。
+
+	runlevel S初始化系统，不需要/etc/inittab文件。
+
+	在单用户模式，/sbin/sulogin在/dev/console上被调用。
+
+	当进入单用户模式时，init初始化stty设置为健全的值。Clocal模式被设
+置，硬件速度和握手未变。
+
+	当第一次进入到多用户模式时，init进程会执行/etc/inittab中的boot和
+bootwait表项，在允许用户登录之前挂载文件系统。然后处理和当前runlevel
+向匹配的表项。
+
+	当期动一个新的进程时，init进程首先检查/etc/initscript是否存在，如
+果存在的话，就使用这个脚本去启动新的进程。
+
+	
