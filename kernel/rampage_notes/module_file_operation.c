@@ -150,3 +150,47 @@ release函数为phys_mem_release，它的主要作用是关闭设备文件，并
         }
     }
 
+下面分析ioctl函数的实现，因为在file_operations中unlocked_ioctl被
+设置为dispatch_ioctl，该函数的作用就是根据不同的阶段调用不同的函
+数。最终有效的函数是file_ioctl_open，来看一下这个函数的实现：
+函数前面所做的一系列检查在这里就不再赘述了。
+
+        case PHYS_MEM_IOC_REQUEST_PAGES:
+        {
+            /*  arg points to the struct phys_mem_request */
+            struct phys_mem_request request;
+
+            if (copy_from_user(&request, (struct phys_mem_request __user *) arg, sizeof (struct phys_mem_request))) {
+                printk(KERN_DEBUG "Session %llu: file_ioctl_open: copy_from_user failed. \n", session->session_id);
+                ret = -EFAULT;
+            } else {
+                if (request.protocol_version != IOCTL_REQUEST_VERSION)
+                    ret = -EINVAL;
+                else
+                    ret = handle_request_pages(session, &request);
+            }
+            break;
+        }
+如果是获取内存的请求，调用handle_request_pages来处理页框请求问题。
+
+        case PHYS_MEM_IOC_MARK_FRAME_BAD:
+        {
+            /*  arg points to the struct mark_page_poison */
+            struct mark_page_poison request;
+
+            if (copy_from_user(&request, (struct mark_page_poison __user *) arg, sizeof (struct mark_page_poison))) {
+                printk(KERN_DEBUG "Session %llu: file_ioctl_open: copy_from_user failed. \n", session->session_id);
+                ret = -EFAULT;
+            } else {
+#if 0
+                printk(KERN_DEBUG "Session %llu: request: Ver %lu,  pfn: %lu  \n", session->session_id, request.protocol_version, request.bad_pfn);
+#endif
+                if (request.protocol_version != IOCTL_REQUEST_VERSION)
+                    ret = -EINVAL;
+                else
+                    ret = handle_mark_page_poison(session, &request);
+            }
+            break;
+        }
+如果是标记某一个页为脏的话，调用handle_mark_page_poison来进行处理。
+handle_request_pages和handle_mark_page_poison参考page_claiming.c。
