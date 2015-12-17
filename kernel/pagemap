@@ -12,8 +12,9 @@ pagemap
        * 0-4 ： 如果被swap的话，表示swap的类型
        * 5-54： 如果被swap的话，表示swap的偏移
        * 55  ： PTE是soft-dirty
-       * 56-60： 0
-       * 61  ： 页是文件页（file-page）或共享匿名页（shared-anon）
+	   * 56  ： 页被互斥的映射（since 4.2）
+       * 57-60： 0
+       * 61  ： 页是文件页（file-page）或共享匿名页（shared-anon）（since 3.5）
        * 62  ： 页被交换出去
        * 63  ： 页存在
 
