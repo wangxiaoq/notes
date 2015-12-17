@@ -1,0 +1,498 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Python使用struct处理二进制 - Gala - 博客园</title>
+<link type="text/css" rel="stylesheet" href="struct_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="struct_files/bundle-LessIsMore.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/gala/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/gala/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/gala/wlwmanifest.xml">
+<script src="struct_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'gala', cb_enable_mathjax=false;</script>
+<script src="struct_files/blog-common.js" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+		
+<!--done-->
+<div class="title"><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/gala/">嘎啦</a></div>
+<div class="subtitle"><div style="text-align: right;">
+简单的幸福</div></div>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li id="nav_sitehome"><a id="MyLinks1_HomeLink" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+<li id="nav_myhome"><a id="MyLinks1_MyHomeLink" class="menu" href="http://www.cnblogs.com/gala/">首页</a></li>
+<li id="nav_q"><a class="menu" href="http://q.cnblogs.com/">博问</a></li>
+<li id="nav_ing"><a class="menu" href="http://home.cnblogs.com/ing/">闪存</a></li>
+<li id="nav_newpost"><a id="MyLinks1_NewPostLink" class="menu" rel="nofollow" href="http://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li id="nav_contact"></li>
+<li id="nav_rss">
+<!----></li>
+<li id="nav_admin"><a id="MyLinks1_Admin" class="menu" rel="nofollow" href="http://i.cnblogs.com/">管理</a></li>
+</ul>
+
+		<div class="blogStats">
+			
+			
+<!--done-->
+随笔-17&nbsp;
+文章-6&nbsp;
+评论-12&nbsp;
+
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/gala/archive/2011/09/22/2184801.html">Python使用struct处理二进制</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><p>有的时候需要用python处理二进制数据，比如，存取文件，socket操作时.这时候，可以使用python的struct模块来完成.可以用 struct来处理c语言中的结构体.<br>&nbsp;</p>
+<p>struct模块中最重要的三个函数是pack(), unpack(), calcsize()</p>
+<p>pack(fmt, v1, v2, ...) &nbsp; &nbsp; 按照给定的格式(fmt)，把数据封装成字符串(实际上是类似于c结构体的字节流)</p>
+<p>unpack(fmt, string) &nbsp; &nbsp; &nbsp; 按照给定的格式(fmt)解析字节流string，返回解析出来的tuple</p>
+<p>calcsize(fmt) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 计算给定的格式(fmt)占用多少字节的内存<br>&nbsp;</p>
+<p>struct中支持的格式如下表：</p>
+<table class="docutils" border="1">
+<thead valign="bottom">
+<tr><th class="head">Format</th><th class="head">C Type</th><th class="head">Python</th><th class="head">字节数</th></tr>
+</thead>
+<tbody valign="top">
+<tr>
+<td><tt class="docutils literal"><span class="pre"><span face="新宋体" style="font-family: 新宋体;">x</span></span></tt></td>
+<td>pad byte</td>
+<td>no value</td>
+<td>1</td>
+</tr>
+<tr>
+<td><tt class="docutils literal"><span class="pre"><span face="新宋体" style="font-family: 新宋体;">c</span></span></tt></td>
+<td><tt class="xref docutils literal"><span class="pre"><span face="新宋体" style="font-family: 新宋体;">char</span></span></tt></td>
+<td>string of length 1</td>
+<td>1</td>
+</tr>
+<tr>
+<td><tt class="docutils literal"><span class="pre"><span face="新宋体" style="font-family: 新宋体;">b</span></span></tt></td>
+<td><tt class="xref docutils literal"><span face="新宋体" style="font-family: 新宋体;"><span class="pre">signed</span> <span class="pre">char</span></span></tt></td>
+<td>integer</td>
+<td>1</td>
+</tr>
+<tr>
+<td><tt class="docutils literal"><span class="pre"><span face="新宋体" style="font-family: 新宋体;">B</span></span></tt></td>
+<td><tt class="xref docutils literal"><span face="新宋体" style="font-family: 新宋体;"><span class="pre">unsigned</span> <span class="pre">char</span></span></tt></td>
+<td>integer</td>
+<td>1</td>
+</tr>
+<tr>
+<td><tt class="docutils literal"><span class="pre"><span face="新宋体" style="font-family: 新宋体;">?</span></span></tt></td>
+<td><tt class="xref docutils literal"><span class="pre"><span face="新宋体" style="font-family: 新宋体;">_Bool</span></span></tt></td>
+<td>bool</td>
+<td>1</td>
+</tr>
+<tr>
+<td><tt class="docutils literal"><span class="pre"><span face="新宋体" style="font-family: 新宋体;">h</span></span></tt></td>
+<td><tt class="xref docutils literal"><span class="pre"><span face="新宋体" style="font-family: 新宋体;">short</span></span></tt></td>
+<td>integer</td>
+<td>2</td>
+</tr>
+<tr>
+<td><tt class="docutils literal"><span class="pre"><span face="新宋体" style="font-family: 新宋体;">H</span></span></tt></td>
+<td><tt class="xref docutils literal"><span face="新宋体" style="font-family: 新宋体;"><span class="pre">unsigned</span> <span class="pre">short</span></span></tt></td>
+<td>integer</td>
+<td>2</td>
+</tr>
+<tr>
+<td><tt class="docutils literal"><span class="pre"><span face="新宋体" style="font-family: 新宋体;">i</span></span></tt></td>
+<td><tt class="xref docutils literal"><span class="pre"><span face="新宋体" style="font-family: 新宋体;">int</span></span></tt></td>
+<td>integer</td>
+<td>4</td>
+</tr>
+<tr>
+<td><tt class="docutils literal"><span class="pre"><span face="新宋体" style="font-family: 新宋体;">I</span></span></tt></td>
+<td><tt class="xref docutils literal"><span face="新宋体" style="font-family: 新宋体;"><span class="pre">unsigned</span> <span class="pre">int</span></span></tt></td>
+<td>integer or long</td>
+<td>4</td>
+</tr>
+<tr>
+<td><tt class="docutils literal"><span class="pre"><span face="新宋体" style="font-family: 新宋体;">l</span></span></tt></td>
+<td><tt class="xref docutils literal"><span class="pre"><span face="新宋体" style="font-family: 新宋体;">long</span></span></tt></td>
+<td>integer</td>
+<td>4</td>
+</tr>
+<tr>
+<td><tt class="docutils literal"><span class="pre"><span face="新宋体" style="font-family: 新宋体;">L</span></span></tt></td>
+<td><tt class="xref docutils literal"><span face="新宋体" style="font-family: 新宋体;"><span class="pre">unsigned</span> <span class="pre">long</span></span></tt></td>
+<td>long</td>
+<td>4</td>
+</tr>
+<tr>
+<td><tt class="docutils literal"><span class="pre"><span face="新宋体" style="font-family: 新宋体;">q</span></span></tt></td>
+<td><tt class="xref docutils literal"><span face="新宋体" style="font-family: 新宋体;"><span class="pre">long</span> 
+<span class="pre">long</span></span></tt></td>
+<td>long</td>
+<td>8</td>
+</tr>
+<tr>
+<td><tt class="docutils literal"><span class="pre"><span face="新宋体" style="font-family: 新宋体;">Q</span></span></tt></td>
+<td><tt class="xref docutils literal"><span face="新宋体" style="font-family: 新宋体;"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span></span></tt></td>
+<td>long</td>
+<td>8</td>
+</tr>
+<tr>
+<td><tt class="docutils literal"><span class="pre"><span face="新宋体" style="font-family: 新宋体;">f</span></span></tt></td>
+<td><tt class="xref docutils literal"><span class="pre"><span face="新宋体" style="font-family: 新宋体;">float</span></span></tt></td>
+<td>float</td>
+<td>4</td>
+</tr>
+<tr>
+<td><tt class="docutils literal"><span class="pre"><span face="新宋体" style="font-family: 新宋体;">d</span></span></tt></td>
+<td><tt class="xref docutils literal"><span class="pre"><span face="新宋体" style="font-family: 新宋体;">double</span></span></tt></td>
+<td>float</td>
+<td>8</td>
+</tr>
+<tr>
+<td><tt class="docutils literal"><span class="pre"><span face="新宋体" style="font-family: 新宋体;">s</span></span></tt></td>
+<td><tt class="xref docutils literal"><span class="pre"><span face="新宋体" style="font-family: 新宋体;">char[]</span></span></tt></td>
+<td>string</td>
+<td>1</td>
+</tr>
+<tr>
+<td><tt class="docutils literal"><span class="pre"><span face="新宋体" style="font-family: 新宋体;">p</span></span></tt></td>
+<td><tt class="xref docutils literal"><span class="pre"><span face="新宋体" style="font-family: 新宋体;">char[]</span></span></tt></td>
+<td>string</td>
+<td>1</td>
+</tr>
+<tr>
+<td><tt class="docutils literal"><span class="pre"><span face="新宋体" style="font-family: 新宋体;">P</span></span></tt></td>
+<td><tt class="xref docutils literal"><span face="新宋体" style="font-family: 新宋体;"><span class="pre">void</span> 
+<span class="pre">*</span></span></tt></td>
+<td>long</td>
+</tr>
+</tbody>
+</table>
+<p>注1.q和Q只在机器支持64位操作时有意思</p>
+<p>注2.每个格式前可以有一个数字，表示个数</p>
+<p>注3.s格式表示一定长度的字符串，4s表示长度为4的字符串，但是p表示的是pascal字符串</p>
+<p>注4.P用来转换一个指针，其长度和机器字长相关</p>
+<p>注5.最后一个可以用来表示指针类型的，占4个字节<br>&nbsp;</p>
+<p>为了同c中的结构体交换数据，还要考虑有的c或c++编译器使用了字节对齐，通常是以4个字节为单位的32位系统，故而struct根据本地机器字节顺序转换.可以用格式中的第一个字符来改变对齐方式.定义如下：</p>
+<table class="docutils" border="1">
+<thead valign="bottom">
+<tr><th class="head">Character</th><th class="head">Byte order</th><th class="head">Size and alignment</th></tr>
+</thead>
+<tbody valign="top">
+<tr>
+<td><tt class="docutils literal"><span class="pre"><span face="新宋体" style="font-family: 新宋体;">@</span></span></tt></td>
+<td>native</td>
+<td>native&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 凑够4个字节</td>
+</tr>
+<tr>
+<td><tt class="docutils literal"><span class="pre"><span face="新宋体" style="font-family: 新宋体;">=</span></span></tt></td>
+<td>native</td>
+<td>standard&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 按原字节数</td>
+</tr>
+<tr>
+<td><tt class="docutils literal"><span class="pre"><span face="新宋体" style="font-family: 新宋体;">&lt;</span></span></tt></td>
+<td>little-endian</td>
+<td>standard&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 按原字节数</td>
+</tr>
+<tr>
+<td><tt class="docutils literal"><span class="pre"><span face="新宋体" style="font-family: 新宋体;">&gt;</span></span></tt></td>
+<td>big-endian</td>
+<td>standard&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 按原字节数</td>
+</tr>
+<tr>
+<td><tt class="docutils literal"><span class="pre"><span face="新宋体" style="font-family: 新宋体;">!</span></span></tt></td>
+<td>network (= big-endian)</td>
+<td>
+<p>standard&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 按原字节数</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>使用方法是放在fmt的第一个位置，就像'@5s6sif'<br>&nbsp;</p>
+<p><strong>示例一：</strong></p>
+<p><strong></strong>比如有一个结构体</p>
+<p>struct Header</p>
+<p>{</p>
+<p>&nbsp; &nbsp; unsigned short id;</p>
+<p>&nbsp; &nbsp; char[4] tag;</p>
+<p>&nbsp; &nbsp; unsigned int version;</p>
+<p>&nbsp; &nbsp; unsigned int count;</p>
+<p>}</p>
+<p>通过socket.recv接收到了一个上面的结构体数据，存在字符串s中，现在需要把它解析出来，可以使用unpack()函数.</p>
+<p>import struct</p>
+<p>id, tag, version, count = struct.unpack("!H4s2I", s)</p>
+<p>上面的格式字符串中，!表示我们要使用网络字节顺序解析，因为我们的数据是从网络中接收到的，在网络上传送的时候它是网络字节顺序的.后面的H表示 一个unsigned short的id,4s表示4字节长的字符串，2I表示有两个unsigned int类型的数据.<br><br><br>就通过一个unpack，现在id, tag, version, count里已经保存好我们的信息了.</p>
+<p>同样，也可以很方便的把本地数据再pack成struct格式.</p>
+<p>ss = struct.pack("!H4s2I", id, tag, version, count);</p>
+<p>pack函数就把id, tag, version, count按照指定的格式转换成了结构体Header，ss现在是一个字符串(实际上是类似于c结构体的字节流)，可以通过 socket.send(ss)把这个字符串发送出去.</p>
+<p><strong><br>示例二：</strong></p>
+<p>import struct</p>
+<p>a=12.34</p>
+<p>#将a变为二进制</p>
+<p>bytes=struct.pack('i',a)</p>
+<p>此时bytes就是一个string字符串，字符串按字节同a的二进制存储内容相同。</p>
+<p><br>再进行反操作</p>
+<p>现有二进制数据bytes，（其实就是字符串），将它反过来转换成python的数据类型：</p>
+<p>a,=struct.unpack('i',bytes)</p>
+<p>注意，unpack返回的是tuple</p>
+<p>所以如果只有一个变量的话：</p>
+<p>bytes=struct.pack('i',a)</p>
+<p>那么，解码的时候需要这样</p>
+<p>a,=struct.unpack('i',bytes) 或者 (a,)=struct.unpack('i',bytes)</p>
+<p>如果直接用a=struct.unpack('i',bytes)，那么 a=(12.34,) ，是一个tuple而不是原来的浮点数了。</p>
+<p><br>如果是由多个数据构成的，可以这样：</p>
+<p>a='hello'</p>
+<p>b='world!'</p>
+<p>c=2</p>
+<p>d=45.123</p>
+<p>bytes=struct.pack('5s6sif',a,b,c,d)</p>
+<p>此时的bytes就是二进制形式的数据了，可以直接写入文件比如 binfile.write(bytes)</p>
+<p>然后，当我们需要时可以再读出来，bytes=binfile.read()</p>
+<p>再通过struct.unpack()解码成python变量</p>
+<p>a,b,c,d=struct.unpack('5s6sif',bytes)</p>
+<p>'5s6sif'这个叫做fmt，就是格式化字符串，由数字加字符构成，5s表示占5个字符的字符串，2i，表示2个整数等等，下面是可用的字符及类型，ctype表示可以与python中的类型一一对应。</p>
+<p><strong><br>注意：二进制文件处理时会碰到的问题</strong></p>
+<p style="margin-top: 10px; margin-right: auto; margin-bottom: 10px; margin-left: auto; text-indent: 0px;">我们使用处理二进制文件时，需要用如下方法</p>
+<p style="margin-top: 10px; margin-right: auto; margin-bottom: 10px; margin-left: auto; text-indent: 0px;">binfile=open(filepath,'rb') &nbsp; &nbsp;读二进制文件</p>
+<p style="margin-top: 10px; margin-right: auto; margin-bottom: 10px; margin-left: auto; text-indent: 0px;">binfile=open(filepath,'wb') &nbsp; &nbsp;写二进制文件</p>
+<p style="margin-top: 10px; margin-right: auto; margin-bottom: 10px; margin-left: auto; text-indent: 0px;">那么和binfile=open(filepath,'r')的结果到底有何不同呢？</p>
+<p style="margin-top: 10px; margin-right: auto; margin-bottom: 10px; margin-left: auto; text-indent: 0px;">不同之处有两个地方：</p>
+<p style="margin-top: 10px; margin-right: auto; margin-bottom: 10px; margin-left: auto; text-indent: 0px;">第一，使用'r'的时候如果碰到'0x1A'，就会视为文件结束，这就是EOF。使用'rb'则不存在这个问题。即，如果你用二进制写入再用文本读出的话，如果其中存在'0X1A'，就只会读出文件的一部分。使用'rb'的时候会一直读到文件末尾。</p>
+<p style="margin-top: 10px; margin-right: auto; margin-bottom: 10px; margin-left: auto; text-indent: 0px;">第
+二，对于字符串x='abc\ndef'，我们可用len(x)得到它的长度为7，\n我们称之为换行符，实际上是'0X0A'。当我们用'w'即文本方
+式写的时候，在windows平台上会自动将'0X0A'变成两个字符'0X0D'，'0X0A'，即文件长度实际上变成8.。当用'r'文本方式读取
+时，又自动的转换成原来的换行符。如果换成'wb'二进制方式来写的话，则会保持一个字符不变，读取时也是原样读取。所以如果用文本方式写入，用二进制方
+式读取的话，就要考虑这多出的一个字节了。'0X0D'又称回车符。linux下不会变。因为linux只使用'0X0A'来表示换行。</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/gala/category/324177.html">Python</a></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info"><div id="green_channel">
+<a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(2184801,cb_blogId,1);green_channel_success(this,'谢谢推荐！');">好文要顶</a>
+<a id="green_channel_follow" onclick="c_follow();" href="javascript:void(0);">关注我</a>
+<a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a><a id="green_channel_contact" href="http://msg.cnblogs.com/send/Gala" target="_blank">联系我</a>
+<a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="struct_files/icon_weibo_24.png" alt=""></a>
+<a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="struct_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+<div id="author_profile_info" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/gala/" target="_blank"><img src="struct_files/u330795.jpeg" class="author_avatar" alt=""></a>
+<div id="author_profile_detail" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/gala/">Gala</a><br>
+<a href="http://home.cnblogs.com/u/gala/followees">关注 - 50</a><br>
+<a href="http://home.cnblogs.com/u/gala/followers">粉丝 - 19</a>
+</div>
+</div>
+<div class="clear"></div>
+<div id="author_profile_honor"></div>
+<div id="author_profile_follow">
+    <a href="javascript:void(0);" onclick="c_follow();return false;">+加关注</a>
+</div>
+</div>
+<div id="div_digg">										
+    <div class="diggit" onclick="votePost(2184801,'Digg')">
+        <span class="diggnum" id="digg_count">4</span>
+    </div>
+	<div class="buryit" onclick="votePost(2184801,'Bury')"> 
+		<span class="burynum" id="bury_count">0</span>
+	</div>
+	<div class="clear"></div>	
+	<div class="diggword" id="digg_tips">
+    (请您对文章做出评价)
+    </div>	
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/gala/archive/2011/09/21/2184095.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/gala/archive/2011/09/21/2184095.html" title="发布于2011-09-21 15:43">控制台密码输入控制</a><br><a href="http://www.cnblogs.com/gala/archive/2011/09/26/2191598.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/gala/archive/2011/09/26/2191598.html" title="发布于2011-09-26 13:13">typedef用法详解</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2011-09-22 10:36</span> <a href="http://www.cnblogs.com/gala/">Gala</a> 阅读(<span id="post_view_count">49403</span>) 评论(<span id="post_comment_count">3</span>)  <a href="http://i.cnblogs.com/EditPosts.aspx?postid=2184801" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(2184801);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,isLogined=false,cb_blogId=96798,cb_entryId=2184801,cb_blogApp=currentBlogApp,cb_blogUserGuid='c573e2a4-d2d9-e011-8ee0-842b2b196315',cb_entryCreatedDate='2011/9/22 10:36:00';loadViewCount(cb_entryId);</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<!--done-->
+<div class="feedback_area_title">评论列表</div>
+<div class="feedbackNoItems"></div>
+	
+
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="#2953162" class="layer">#1楼</a><a name="2953162" id="comment_anchor_2953162"></a>  <span class="comment_date">2014-05-29 12:56</span> <a id="a_comment_author_2953162" href="http://www.cnblogs.com/diyunpeng/" target="_blank">规格严格-功夫到家</a> <a href="http://msg.cnblogs.com/send/%E8%A7%84%E6%A0%BC%E4%B8%A5%E6%A0%BC-%E5%8A%9F%E5%A4%AB%E5%88%B0%E5%AE%B6" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2953162" class="blog_comment_body">写的不错啊。·····</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2953162,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2953162,'Bury',this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="#3012575" class="layer">#2楼</a><a name="3012575" id="comment_anchor_3012575"></a>  <span class="comment_date">2014-08-20 16:16</span> <a id="a_comment_author_3012575" href="http://home.cnblogs.com/u/312755/" target="_blank">niceheart</a> <a href="http://msg.cnblogs.com/send/niceheart" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3012575" class="blog_comment_body">博主，请问一下类似于这个的数据ss = struct.pack("!H4s2I", id, tag, version, count);在java中又如何处理才能和这种格式一样？</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3012575,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3012575,'Bury',this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="#3218898" class="layer">#3楼</a><a name="3218898" id="comment_anchor_3218898"></a><span id="comment-maxId" style="display:none;">3218898</span><span id="comment-maxDate" style="display:none;">2015/7/1 11:11:36</span>  <span class="comment_date">2015-07-01 11:11</span> <a id="a_comment_author_3218898" href="http://home.cnblogs.com/u/478306/" target="_blank">cool_navy</a> <a href="http://msg.cnblogs.com/send/cool_navy" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3218898" class="blog_comment_body">你好，请问可以打包解析混杂结构<br>例如，变长的字符串, 把字符串长度写入buf，读取时先读取一个长度，再按这个长度读取字符串；有类似这样的用法吗<br>s='hello world'<br>buf=struct.pack('i'+str(len(s))+'s', len(s),s)<br>...<br>l,s=struct.unpack('i'+str(l)+'s', buf)</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3218898,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3218898,'Bury',this)">反对(0)</a></div>
+			</div>
+		</div>
+	<div id="comments_pager_bottom"></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" id="lnk_RefreshComments" onclick="return RefreshCommentList();">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login('commentform');">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="site_nav_under"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="https://www.jpush.cn/" target="_blank">【推荐】极光推送30多万开发者的选择，SDK接入量超过30亿了，你还没注册？</a><br><a href="http://click.aliyun.com/m/994/" target="_blank">【免费测】根据网站PV推荐完整架构方案</a><br></div>
+<div id="opt_under_post"></div>
+<script type="text/javascript">
+    fixPostBodyFormat();
+</script>
+<div id="google_ad_c1" class="c_ad_block"><a href="http://www.gcpowertools.com.cn/products/componentone.htm?utm_source=cnblogs&amp;utm_medium=blogpage&amp;utm_term=bottom&amp;utm_content=C1&amp;utm_campaign=community" target="_blank"><img src="struct_files/24442-20151030141701419-628671799.gif" alt="" title="" height="250" width="300"></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/534605/" target="_blank">《神秘的程序员们》漫画29：挣点钱咋就这么难——您到底想做个啥？</a><br> ·  <a href="http://news.cnblogs.com/n/534762/" target="_blank">《福布斯》：为女性事业鼓与呼的盖茨夫人</a><br> ·  <a href="http://news.cnblogs.com/n/534761/" target="_blank">王功权：暴利时代已过去 创业者要调整自己的预期</a><br> ·  <a href="http://news.cnblogs.com/n/534766/" target="_blank">携程阿里旅行机票业务再开撕</a><br> ·  <a href="http://news.cnblogs.com/n/534765/" target="_blank">从争议到涅槃 2015年百度O2O“暴走”大事记</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="google_ad_c2" class="c_ad_block"><a href="http://e.jikexueyuan.com/html5.html?hmsr=cnb_banner_html5_09.14" target="_blank"><img src="struct_files/24442-20150914101329570-406117032.jpg" alt="" title="" height="60" width="468"></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/534420/" target="_blank">Linux概念架构的理解</a><br> ·  <a href="http://kb.cnblogs.com/page/527814/" target="_blank">从涂鸦到发布——理解API的设计过程</a><br> ·  <a href="http://kb.cnblogs.com/page/531834/" target="_blank">好的架构是进化来的，不是设计来的</a><br> ·  <a href="http://kb.cnblogs.com/page/532236/" target="_blank">被误解的MVC和被神化的MVVM</a><br> ·  <a href="http://kb.cnblogs.com/page/530046/" target="_blank">再谈设计和编码</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+$(function () {
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+});
+</script>
+</div>
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/gala/">Gala</a><br>园龄：<a href="http://home.cnblogs.com/u/gala/" title="入园时间：2011-09-08">4年3个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/gala/followers/">19</a><br>关注：<a href="http://home.cnblogs.com/u/gala/followees/">50</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="cnblogs.UserManager.FollowBlogger('c573e2a4-d2d9-e011-8ee0-842b2b196315')">+加关注</a></div></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="calendar"><div id="blog-calendar" style="display:none"></div><script type="text/javascript">loadBlogDefaultCalendar();</script></div>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+
+<div id="widget_my_google" class="div_my_zzk"><input name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk" type="text">&nbsp;<input onclick="google_go()" value="谷歌搜索" class="btn_my_zzk" type="button"></div>
+</div>
+</div>
+
+</div><div id="sidebar_toptags" class="sidebar-block"></div><div id="sidebar_categories">
+<div class="catListPostCategory">
+<h3 class="catListTitle">随笔分类</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/gala/category/324015.html">C/C++(9)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/gala/category/328778.html">Design Pattern(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/gala/category/327872.html">GTK+(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/gala/category/321793.html">Linux系统应用(4)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/gala/category/324177.html">Python(1)</a> </li>
+
+</ul>
+
+</div>
+
+<div class="catList">
+<h3 class="catListTitle">开发相关</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_1_Link_0" href="http://www.cnblogs.com/wanggary/category/294620.html">C++设计模式</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_1" href="http://blog.csdn.net/jianchi88" rel="nofollow">嵌入式基础</a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_scorerank" class="sidebar-block">
+<div class="catListBlogRank">
+<h3 class="catListTitle">积分与排名</h3>
+<ul>
+	<li class="liScore">
+		积分 -	22900
+	</li>
+	<li class="liRank">
+		排名 -	9088
+	</li>
+</ul>
+</div>
+
+
+</div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/gala/archive/2011/09/22/2184801.html">1. Python使用struct处理二进制(4)</a></li><li><a href="http://www.cnblogs.com/gala/archive/2012/04/12/2444491.html">2. 动态数组空间释放——指针误操作(3)</a></li><li><a href="http://www.cnblogs.com/gala/archive/2011/10/07/2200655.html">3. 指针与数组(2)</a></li><li><a href="http://www.cnblogs.com/gala/archive/2011/10/10/2206529.html">4. Fedora12配置OpenCV开发环境(2)</a></li><li><a href="http://www.cnblogs.com/gala/archive/2012/02/09/2343902.html">5. std::vector对象操作(1)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2015 Gala
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+</body></html>
