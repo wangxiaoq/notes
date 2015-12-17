@@ -1,0 +1,37 @@
+man 8 ld-linux.so
+=================
+NAME
+	ld.so/ld-linux.so - 动态链接器/加载器
+
+DESCRIPTION
+	ld.so加载程序需要的共享库，为程序的运行做准备，然后运行程序。
+除非在编译时用-static选项明确的指定了ld，否则所有的linux程序都是
+不完整的，需要在运行时进行链接。
+
+	此程序需要的共享库是按照下面的顺序进行搜索的：
+
+	* 使用LD_LIBRARY_PATH（a.out程序使用LD_AOUT_LIBRARY_PATH），
+	  除了程序使用setuid或者setgid；
+
+	* 在缓存文件/etc/ld.so.cache中查找，这个文件中包含了编译需要
+	  的备选库文件的列表，这些库文件存在于扩展的库路径下。更倾向
+	  于硬件功能目录下的库文件；
+
+	* 默认路径/lib和/usr/lib；
+
+COMMAND LINE OPTIONS
+	--list 列出所有的依赖以及它们如何解决；
+
+	--verify 检查一个程序是否是需要动态加载的，并且当前的加载器
+	能否处理；
+
+	--library-path PATH
+		覆盖LD_LIBRARY_PATH变量；
+
+	--ignore-rpath LIST
+		忽略对象名字中存在，并且也存在于LIST中的RPATH和RUNPATH；
+	这个选项仅在glibc2中支持了一个小时，然后被重命名为：
+
+	--inhibit-path LIST
+
+
