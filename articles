@@ -1,0 +1,12 @@
+C 语言话题
+----------
+C语言对齐 - http://www.catb.org/esr/structure-packing/
+          - https://wr.informatik.uni-hamburg.de/_media/teaching/wintersemester_2013_2014/epc-14-haase-svenhendrik-alignmentinc-paper.pdf
+
+32位机器上double对齐的相关问题 - http://blog.chinaunix.net/uid-7319742-id-2059621.html
+
+flexible array member - http://blog.csdn.net/sunlylorn/article/details/7544301
+
+程序的未定义行为 - http://blog.regehr.org/archives/213
+
+cache-line bouncing - http://stackoverflow.com/questions/4802565/multiple-threads-and-cpu-cache
