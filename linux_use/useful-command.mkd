@@ -5,3 +5,9 @@
 4. cloc - 非常好用的统计代码的工具，例如：cloc *.c；
 5. htop - 一个非常直观的动态显示系统资源使用情况的工具；
 6. watch - 用来监测程序多次执行的差异，而不用一次次的去执行程序；
+7. kexec - 从当前上下文快速启动一个新的内核；使用方法如下：
+```
+   *加载：kexec -l /boot/vmlinuz-4.4.0-21-generic --initrd="/boot/initrd.img-4.4.0-21-generic" --append="/dev/sda6"*
+   *快速启动：kexec -e*
+   *卸载当前内核：kexec -u*
+```
