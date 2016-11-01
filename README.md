@@ -20,6 +20,13 @@
 
 
 ## Shell脚本
+1. [数值计算](shell/arithmatic.md)
+2. [布尔运算](shell/bool.md)
+3. [文件操作](shell/file.md)
+4. [文件系统操作](shell/filesystem.md)
+5. [进程操作](shell/process.md)
+6. [正则表达式](shell/regular-expression.md)
+7. [字符串操作](shell/string.md)
 
 ## C语言
 

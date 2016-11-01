@@ -1,8 +1,7 @@
-正则表达式
+### 正则表达式
 
-2014.08.30				王小强 
-==================================
-1. grep 使用：
+1.grep 使用：
+
 	* grep -n 'the' -A 2 -B 2 --color=auto regular_express.txt
 	  对该命令的介绍：
 	  -n 表示显示行号；
@@ -35,7 +34,8 @@
 	  显示颜色，在里面添加一行 alias grep='grep --color=auto'
 	
 
-2. 在正规表示法中：
+2.在正规表示法中：
+
 	* “.”表示一定有一个字符
 	* “*”表示零个或者多个字符
 	* 例如：
@@ -45,6 +45,7 @@
 	  表示查找两个g之间有一个或者多个o的关键字所在的行
 			grep -n '[0-9][0-9]*' regular_express.txt	
 	  表示查找数字
+	  
 	* grep -n 'o\{2\}' regular_express.txt
 	  查找连续出现2个字符o所在的行
 	  grep -n 'go\{2,5\}g' regular_express.txt
@@ -52,7 +53,8 @@
 	  grep -n 'go\{2,\}g' regular_express.txt
 	  查找含有两个以上的o所在的行
 	
-3. sed工具的使用
+3.sed工具的使用
+
 	* nl regular_express.txt | sed '2,5d'
 	  删除第二行和第五行，注意并没有对regular_express.txt文件做任何修改
 	  nl regular_express.txt | sed '2d'
