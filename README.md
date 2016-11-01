@@ -29,5 +29,9 @@
 7. [字符串操作](shell/string.md)
 
 ## C语言
+1. [字符指针与字符数组的区别](c/char_array_and_string.md)
+2. [有符号数与无符号数的区别](c/sign_and_unsign_number.md)
+3. [全局变量与静态变量](c/static_global_variable.md)
+4. [交换两个变量](c/swap-two-variable.md)
 
 ## Linux内核笔记
