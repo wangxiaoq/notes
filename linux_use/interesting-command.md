@@ -1,12 +1,13 @@
-几个Linux终端下超赞的小命令 
+### 几个Linux终端下超赞的小命令 
 
-致谢：本文来自longerzone专栏，非常感谢云龙兄
-	  无私奉献
-ref: http://blog.csdn.net/longerzone/article/details/8637530
-============================================
+*致谢：本文来自longerzone专栏，非常感谢云龙兄无私奉献*
+
+*ref: http://blog.csdn.net/longerzone/article/details/8637530*
 
 编者注： 如下几个小命令可能是这些Linux大牛们一时兴起，玩的东东，不过这也证明了我们Nichol的一句话 “ Programmer are just like children  no matter  how old  he is ”（好吧，大致是这样，就是说：程序员们不管多大都像小孩一样爱玩）
+
 一、  cowsay 和 xcowsay
+
 这两个小工具挺好玩的，使用apt-get install cowsay安装即可。使用也很简单不用多说直接上图 ： 
 
 
@@ -14,8 +15,13 @@ ref: http://blog.csdn.net/longerzone/article/details/8637530
          
 只需用 '-l 就能看到它能提供的所有动物。输入：
 
+```
 $cowsay -l
+```
+
 系统会弹出下列信息：
+
+```
 Cow files in /usr/cowsay/cows:
 apt beavis.zen bong bud-frogs bunny calvin cheese cock cower daemon default
 dragon dragon-and-cow duck elephant elephant-in-snake eyes flaming-sheep
@@ -23,6 +29,8 @@ ghostbusters gnu head-in hellokitty kiss kitty koala kosh luke-koala
 mech-and-cow meow milk moofasa moose mutilated pony pony-smaller ren sheep
 skeleton snowman sodomized-sheep stegosaurus stimpy suse three-eyes turkey
 turtle tux unipony unipony-smaller vader vader-koala www
+```
+
 因此，我们可以用 ' -f '参数输入以上信息中的任何动物。
 
 对于xcowsay使用与之类似(好像还不支持其他动物)，只做演示，不深研究：
@@ -38,10 +46,9 @@ Ubuntu/Debian用户可以直接通过 sudo apt-get install sl 安装。
 
 
 三、linuxlogo 命令
+
 使用linuxlogo可以直接查看当前比较流行的Linux发行版的Logo哦！挺好玩的！
 Ubuntu用户直接 sudo  apt-get install linuxlogo 安装即可，安装好了后，使用如下命令使用“ linuxlogo -L  ubuntu ” 
-
-
 
 
 四、Linux "yes" 命令
@@ -50,21 +57,24 @@ Ubuntu用户直接 sudo  apt-get install linuxlogo 安装即可，安装好了�
 
 
 命令会这样运行：
-        $yes mylinuxbook
-        mylinuxbook
-        mylinuxbook
-        mylinuxbook
-        mylinuxbook
-        mylinuxbook
-        mylinuxbook
-        mylinuxbook
-        mylinuxbook
-        mylinuxbook
-        mylinuxbook
-        mylinuxbook
-        mylinuxbook
-        mylinuxbook
+
+```
+        $yes mylinuxbook 
+        mylinuxbook 
+        mylinuxbook 
+        mylinuxbook 
+        mylinuxbook 
+        mylinuxbook 
+        mylinuxbook 
+        mylinuxbook 
+        mylinuxbook 
+        mylinuxbook 
+        mylinuxbook 
+        mylinuxbook 
+        mylinuxbook 
+        mylinuxbook 
         ^C$
+```
 用"ctrl+c"结束前台运行进程。
 
 很奇怪，是吗？为什么我们希望命令在进程中一直打印字符串呢？尽管这样运行的方式很傻，但却不一定没用。我们可以用特定脚本中的"yes"命令，在这些脚本中，我们可以用重复操作作答。例如，我们可以在一组文件上进行操作，而Linux会要求我们对文件进行确认。我们可以用"yes"命令自动回复。
@@ -77,18 +87,27 @@ Ubuntu用户直接 sudo  apt-get install linuxlogo 安装即可，安装好了�
 
 
 比如，我们输入"mylinuxbook"然后按回车。
+
+```
         mylinuxbook
         koobxunilym
+```
+
 为了回到命令提示符，可以使用"ctrl+c"。
 
 我们看到颠倒的字符串直接出现在了下一行。然后，我们可以输入下一个希望出现颠倒效果的字符串，接着按回车，就可以得到标准输出了。
+
+```
         $ rev
         google
         elgoog
         linux is fun
         nuf si xunil
         ^C$
+```
 这行命令也可以以文件的形式输入，它会颠倒文件中的所有字符串，然后把输出结果打成标准输出。
+
+```
         $ cat strings.txt
         MyLinuxBook
         Linux is so much fun!
@@ -97,20 +116,30 @@ Ubuntu用户直接 sudo  apt-get install linuxlogo 安装即可，安装好了�
         kooBxuniLyM
         !nuf hcum os si xuniL
         yadhtriB yppaH
+```
 
 六、Linux"fortune" 命令
 
 Fortune命令是在相同命令行中作为fortune cookies。我们运行这个命令的时候随机找了一条谚语或信息。
 
 首先要对其进行安装：
+
+```
         $sudo apt-get install fortune
+```
 安装完成后，我们运行这个命令的方式就是：
+
+```
         $ fortune
         You have the power to influence all with whom you come in contact.
+```
 所以，依靠这个命令，Linux可以像个算命师一样。
 
 为了使之更有趣，你可以让cowsay说出fortune信息，如输入：
+
+```
           $fortune | cowsay
+```
 则出现下面的效果：
 
 
@@ -118,10 +147,17 @@ Fortune命令是在相同命令行中作为fortune cookies。我们运行这个�
 
 这个命令会用大写方式把我们输入的字符串显示在标题栏，显示效果由ASCII字符组成。
 由于它不是标准设置，所以要先安装这一功能:
+
+```
            $sudo apt-get install figlet
+```
 看到字符串在终端上变成这样确实很有意思。(看着效果和上面的Linuxlogo差不多的感觉哈)
+
+```
            $ figlet mylinuxbook
+```
 你可以试着用"figlet"在脚本标头或源代码中添加标题栏。
+
 八、Linux "toilet"命令
 
 我不知道这个命令的名字源自哪里。但是它确实个五颜六色的命令。与figlet一样，它会把文本显示称标题栏，但是效果更好。
@@ -139,6 +175,7 @@ Fortune命令是在相同命令行中作为fortune cookies。我们运行这个�
 
 
 九、Linux "cmatrix"命令
+
 这个命令会在终端生成ASCII字符组成的矩阵风格的动画效果。
 
 先安装：        $ sudo apt-get install cmatrix
@@ -159,7 +196,6 @@ Fortune命令是在相同命令行中作为fortune cookies。我们运行这个�
 即便我们切换应用，猫也不会离开老鼠。它甚至没有局限于终端。想关掉这个的时候，只需在终端里用ctrl+c 结束进程即可。
 
 
-=========================
 资源收集自网络～～
 
 

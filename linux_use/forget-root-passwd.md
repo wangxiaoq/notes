@@ -1,4 +1,4 @@
-Linux忘记root密码
+### Linux忘记root密码
 
    我们经常会碰到忘记root密码的情况，下面是解决之道，
  此方法使用绝大多数的Linux发行版：
@@ -15,9 +15,11 @@ Linux忘记root密码
     就OK了。
 
  3. 启动后，执行下面三条命令：
-    # mount -o remount,rw /
-    # mount -a
-    # passwd root
+    ```
+    # mount -o remount,rw / 
+    # mount -a 
+    # passwd root 
+    ```
 
    如果系统压根没有设置root密码，直接进入recovery mode
 就可以了，然后再执行上面提到的三条命令。

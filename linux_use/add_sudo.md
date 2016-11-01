@@ -1,4 +1,4 @@
-添加用户到sudo的方法
+### 添加用户到sudo的方法
 
 1. chmod +w /etc/sudoers
 

@@ -1,39 +1,47 @@
-gitbook安装
-===========
+### gitbook安装
 
-1. 安装npm 
-从网站 https://nodejs.org/#download 下载node.js源代码（点击绿色的INSTALL），
-	解压
-	./configure
-	make
-	make install 
+1.安装npm 
+
+从网站 https://nodejs.org/#download 下载node.js源代码（点击绿色的INSTALL）：
+```
+解压 
+./configure 
+make 
+make install
+```
 成功执行后，npm就被安装好了。
 
-2. gitbook 安装
-npm install -g gitbook-cli
+2.gitbook 安装
 
-gitbook -V 
+```
+npm install -g gitbook-cli 
+gitbook -V
+```
 查看gitbook是否安装成功。
 
-ref
-===
-1. wanqingwong.com/gitbook-zh/index.html	
+*ref*
 
-gitbook使用
-===========
-1. 根据目录生成图书结构 
+*1. wanqingwong.com/gitbook-zh/index.html*
 
-1.1 README.md 与 SUMMARY编写
-README.md
-这个文件相当于一本Gitbook的简介。
-$ mkdir test_gitbook
+###gitbook使用
+
+1.根据目录生成图书结构 
+
+1.1 README.md 与 SUMMARY.md编写
+README.md这个文件相当于一本Gitbook的简介。
+
+```
+$ mkdir test_gitbook 
 $ touch README.md
+```
 
-SUMMARY.md
-这个文件是一本书的目录结构，使用Markdown语法，
+SUMMARY.md这个文件是一本书的目录结构，使用Markdown语法，
 如我们这本书的SUMMARY.md：
+
+```
 $ touch SUMMARY.md
 $ vim SUMMARY.md
+```
 
 输入
 
@@ -47,56 +55,69 @@ $ vim SUMMARY.md
 * [结束](end/README.md)
 
 1.2 生成图书结构
+
 当这个目录文件创建好之后，我们可以使用Gitbook
 的命令行工具将这个目录结构生成相应的目录及文件：
+
+```
 $ gitbook init
 $ tree .	#查看建立的目录和文件
+```
+
+```
 .
 ├── chapter1
-│   ├── README.md
-│   ├── section1.md
-│   └── section2.md
+│   ├── README.md
+│   ├── section1.md
+│   └── section2.md
 ├── chapter2
-│   ├── README.md
-│   ├── section1.md
-│   └── section2.md
+│   ├── README.md
+│   ├── section1.md
+│   └── section2.md
 ├── end
-│   └── README.md
+│   └── README.md
 ├── README.md
 └── SUMMARY.md
+```
 
-我们可以看到，gitbook给我们生成了与SUMMARY.md所
-对应的目录及文件。
+我们可以看到，gitbook给我们生成了与SUMMARY.md所对应的目录及文件。
 
 每个目录中，都有一个README.md文件，相当于一章的说明。
 
 
-2. 生成图书
+2.生成图书
 
 2.1 输出为静态网站
+
 你有两种方式输出一个静态网站：
+
 2.1.1 本地预览时自动生成
+
 当你在自己的电脑上编辑好图书之后，你可以使用Gitbook
 的命令行进行本地预览：
 
+```
 $ gitbook serve .
+```
 
-然后浏览器中输入 http://localhost:4000 就可以预览生
-成的以网页形式组织的书籍。
-这里你会发现，你在你的图书项目的目录中多了一个名为
-_book的文件目录，而这个目录中的文件，即是生成的静态
-网站内容。
-使用build参数生成到指定目录
-与直接预览生成的静态网站文件不一样的是，使用这个命令，
-你可以将内容输入到你所想要的目录中去：
+然后浏览器中输入 http://localhost:4000 就可以预览生成的以网页形式组织的书籍。这里你会发现，你在你的图书项目的目录中多了一个名为_book的文件目录，而这个目录中的文件，即是生成的静态网站内容。使用build参数生成到指定目录与直接预览生成的静态网站文件不一样的是，使用这个命令，你可以将内容输入到你所想要的目录中去：
+
+```
 $ mkdir /tmp/gitbook
 $ gitbook build --output=/tmp/gitbook
+```
 
 2.2 输出PDF
+
 输入为PDF文件，需要先使用NPM安装上gitbook pdf：
+
+```
 $ sudo npm install gitbook-pdf -g
+
+```
 我在执行上面这条命令的时候出现了下面的错误：
-***************************************************
+
+```
 Downloading http://cdn.bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.7-linux-i686.tar.bz2
 Saving to /usr/local/lib/node_modules/gitbook-pdf/node_modules/phantomjs/phantomjs/phantomjs-1.9.7-linux-i686.tar.bz2
 Error: connect ETIMEDOUT
@@ -123,27 +144,38 @@ npm ERR! There is likely additional logging output above.
 npm ERR! Please include the following file with any support request:
 npm ERR!     /home/wangxq/repository/phantomjs/npm-debug.log
 
-***************************************************
+```
+
 由错误报告内容的第一行可以知道，发生错误的原因是下载
 phantomjs发生了错误，因此我们需要手动下载和安装。
 
 解决方法：[1]
+
+```
 $ git clone git://github.com/ariya/phantomjs.git
 $ sudo apt-get install build-essential g++ flex bison gperf ruby perl \
   libsqlite3-dev libfontconfig1-dev libicu-dev libfreetype6 libssl-dev \
-  libpng-dev libjpeg-dev python libx11-dev libxext-dev       #安装编译需要的工具和依赖
+  libpng-dev libjpeg-dev python libx11-dev libxext-dev      
+#安装编译需要的工具和依赖
+```
+
+```
 $ cd phantomjs
 $ git checkout 1.9.7  #注意：这里的1.9.7是phantom的版本号，可以由错误报告的第一行找出 
 $ ./build.sh --jobs 4
 $ sudo cp bin/phantomjs /bin/
 $ sudo npm install gitbook-pdf -g  #重新进行安装
+```
 
 然后，使用下面的命令，要PDF文件，首先安装依赖库：
 
+```
 $ sudo apt-get install calibre  
 $ gitbook -v 2.1.0 pdf .
+```
 发生错误：
-*****************************************************
+
+```
 info: start conversion to pdf ....ERROR
 
 Error: Command failed: /bin/sh -c ebook-convert /tmp/tmp-29384ctltwbk/SUMMARY.html /tmp/tmp-29384ctltwbk/index.pdf --title="" --comments="这本书是gitbook的一个例子" --language="en" --book-producer="GitBook" --publisher="GitBook" --chapter="descendant-or-self::*[contains(concat(' ', normalize-space(@class), ' '), ' book-chapter ')]" --chapter-mark="pagebreak" --page-breaks-before="/" --level1-toc="descendant-or-self::*[contains(concat(' ', normalize-space(@class), ' '), ' book-chapter-1 ')]" --level2-toc="descendant-or-self::*[contains(concat(' ', normalize-space(@class), ' '), ' book-chapter-2 ')]" --level3-toc="descendant-or-self::*[contains(concat(' ', normalize-space(@class), ' '), ' book-chapter-3 ')]" --no-chapters-in-toc --max-levels="1" --breadth-first --margin-left="62" --margin-right="62" --margin-top="56" --margin-bottom="56" --pdf-default-font-size="12" --pdf-mono-font-size="12" --paper-size="a4" --pdf-header-template="<p class='header'><span></span></p>" --pdf-footer-template="<p class='footer'><span>_SECTION_</span> <span style='float:right;'>_PAGENUM_</span></p>"
@@ -163,21 +195,23 @@ http://manual.calibre-ebook.com/conversion.html
 Whenever you pass arguments to ebook-convert that have spaces in them, enclose the arguments in quotation marks.
 
 ebook-convert: error: no such option: --pdf-default-font-size
+```
 
-*****************************************************
 解决方法[2]
+
+```
 $ sudo -v && wget -nv -O- https://raw.githubusercontent.com/kovidgoyal/calibre/master/setup/linux-installer.py | sudo python -c "import sys; main=lambda:sys.stderr.write('Download failed\n'); exec(sys.stdin.read()); main()"
 
 $ gitbook -v 2.1.0 pdf .  # 重新执行命令生成pdf，目标文件为book.pdf
+```
 
+*ref*
 
+*1. http://phantomjs.org/build.html*
 
-ref
-===
-1. http://phantomjs.org/build.html
-2. http://calibre-ebook.com/download_linux
+*2. http://calibre-ebook.com/download_linux*
 
 问题
-===
+
 1. 如果输入gitbook init命令，出现Installing version 2.1.0，
-需要耐性等待安装。
+需要耐心等待安装。

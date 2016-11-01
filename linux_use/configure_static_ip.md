@@ -1,0 +1,38 @@
+### 配置静态ip
+
+在局域网内使用动态ip分配，机器动态的获取ip地址。但是我使用ssh登录的时候，总是断线。后来发现，原来机器总是在两个ip地址192.168.2.203和192.168.2.228之间切换，用ssh登录老是断线，实在在是受不了了，所以决定配置静态ip。
+
+配置静态ip涉及到两个文件，/etc/network/interface
+和/etc/resolv.conf，两个文件的配置如下：
+
+####/etc/network/interface文件配置：
+
+```
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet static
+address 192.168.2.228
+netmask 255.255.255.0
+gateway 192.168.2.1
+broadcast 192.168.2.255
+```
+
+####/etc/resolv.conf文件配置：
+
+```
+nameserver 192.168.2.1 # 一般和gateway的地址是一致的
+```
+
+
+
+####重启网络： 
+
+```
+sudo /etc/init.d/networking restart
+```

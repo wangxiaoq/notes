@@ -1,5 +1,4 @@
-wheel和staff组
-==============
+###wheel和staff组
 
 wheel组就类似于一个管理员的组
 
@@ -13,12 +12,12 @@ wheel组就类似于一个管理员的组
 
 然后，用“usermod -G wheel 用户名”将一个用户添加到wheel组中。
 然后，用刚刚被添加到wheel组的用户登录，并执行su命令登录为root用户…这时，输入了正确的root密码可以正常的登录为root用户。但是，如果换成一个不属于wheel组的用户时，执行了su命令后，即使输入了正确的root密码，也无法登录为root用户--普通用户登录为root用户的权限被完全剥夺了~（会收到“密码错误”的提示）。这样无疑提高了系统的安全性~
-（以上步骤基于CentOS，并适用于Fedora Core和RHEL。。。而且，我试着回忆以前的操作，印象中FreeBSD好像也一样。） 
-[1]
+（以上步骤基于CentOS，并适用于Fedora Core和RHEL。。。而且，我试着回忆以前的操作，印象中FreeBSD好像也一样。）[1]
 
 staff[2]
 
-ref
-===
-1. http://bbs.csdn.net/topics/330222121
-2. http://www.cnblogs.com/jan5/p/3359421.html
+*ref*
+
+*1. http://bbs.csdn.net/topics/330222121*
+
+*2. http://www.cnblogs.com/jan5/p/3359421.html*
