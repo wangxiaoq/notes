@@ -1,7 +1,6 @@
-pagemap
-=======
+###pagemap
 
-1.   pagemap通过/proc文件系统相应用程序提供页表以及相关的信息。
+1.pagemap通过/proc文件系统相应用程序提供页表以及相关的信息。
      它共有三个部分组成：
      
      * /proc/pid/pagemap - 它包含了进程的每一个虚拟页映射到的
@@ -145,6 +144,6 @@ pagemap
       
 
 
-ref
-===
-1. Documentation/pagemap.txt
+*ref*
+
+*1. Documentation/pagemap.txt*

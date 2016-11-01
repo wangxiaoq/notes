@@ -127,15 +127,18 @@ HWPOISON
 
      
     
-ref
-===
-1. https://lwn.net/Articles/348886/
-2. http://www.linuxprogrammingblog.com/all-about-linux-signals?page=4
-3. https://www.kernel.org/doc/Documentation/vm/hwpoison.txt
+*ref*
 
-problem
-=======
-1. SIGBUS?
+*1. https://lwn.net/Articles/348886/*
+
+*2. http://www.linuxprogrammingblog.com/all-about-linux-signals?page=4*
+
+*3. https://www.kernel.org/doc/Documentation/vm/hwpoison.txt*
+
+
+#### problem
+
+1.SIGBUS?
 
    SIGBUS信号一般在访问映射内存时，与映射的内存相关的
    文件不存在时产生，这种情况一般是由于一个进程已经截
@@ -144,4 +147,4 @@ problem
    进行恢复，需要用到longjmp函数跳转到程序中未访问映
    射内存的其他地方。[2]
 
-2. swap?
+2.swap?

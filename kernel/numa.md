@@ -1,5 +1,5 @@
-NUMA
-====
+###NUMA
+
      NUMA的可以从两方面来定义：硬件和Linux软件。
 
      1. 硬件
@@ -74,8 +74,10 @@ NUMA
      系统，例如，内核性能分析子系统。
 
      
-ref
-===
-1. Documentation/vm/numa
-2. Documentation/sysctl/vm.txt
-3. Documentation/vm/numa_memory_policy.txt.
+*ref*
+
+*1. Documentation/vm/numa*
+
+*2. Documentation/sysctl/vm.txt*
+
+*3. Documentation/vm/numa_memory_policy.txt*

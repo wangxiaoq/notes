@@ -191,6 +191,6 @@ workqueue
     * 除非一个工作项要耗费很多的CPU，一般将工作项添
       加到绑定的工作队列中。
    
-ref
-===
-1. Documentation/workqueue.txt
+*ref*
+
+*1. Documentation/workqueue.txt*

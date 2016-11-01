@@ -1,4 +1,4 @@
-使用kernel-package编译内核imgage包
+### 使用kernel-package编译内核imgage包
 
 
   之前我们编译内核一般也就是使用make --> make modules_install -->
@@ -8,8 +8,16 @@ kernel-package是Debian提供的一个编译Linux内核的一个工具集，安�
 kernel-package 会同时安装上build-essential、libncurses-dev、
 linux-source等一系列工具。下面我们看下此等神器的神器之处：
 
-首先、我们需要安装：# su  -->  # apt-get install kernel-package
-安装完成后我们可以使用dpkg 查看一下：# dpkg -l kernel-package
+首先、我们需要安装：
+
+```
+# su  -->  # apt-get install kernel-package
+```
+
+安装完成后我们可以使用dpkg 查看一下：
+
+```
+# dpkg -l kernel-package
 $dpkg -l kernel-package
 Desired=Unknown/Install/Remove/Purge/Hold
 | Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
@@ -18,11 +26,13 @@ Desired=Unknown/Install/Remove/Purge/Hold
 +++-===================-==============-==============-===========================================
 ii  kernel-package      12.036+nmu3    all            A utility for building Linux kernel related
 $
+```
 
-在打印出来的信息中我们可以看到，kernel-package 是   
-A utility for building Linux kernel related 也就是一个用来构建内核的工具。
+在打印出来的信息中我们可以看到，kernel-package 是 A utility for building Linux kernel related 也就是一个用来构建内核的工具。
 
 同样我们可以查看 类似于make之类的编译系统自带的工具：
+
+```
 long@zhouyl:~$ dpkg -l make
 Desired=Unknown/Install/Remove/Purge/Hold
 | Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
@@ -30,9 +40,13 @@ Desired=Unknown/Install/Remove/Purge/Hold
 ||/ Name                Version        Architecture   Description
 +++-===================-==============-==============-===========================================
 ii  make                3.81-8.2       i386           An utility for Directing compilation.
+```
+
 我们会发现安装完kernel-package之后make等一系列工具都是相关安装了！
 
 然后我们还是编译一个内核看一下kernel-package的真正威力：
+
+```
 # cd  linux-3.4.33    // 进入你想要编译的内核的解压文件夹
 # make menuconfig   // 编译内核，自己选择
 # sudo CONCURRENCY_LEVEL=4 make-kpkg --initrd kernel-image             // 这一句就是在使用kernel-package在编译，CONCURRENCY_LEVEL=4 是设置多线程（类似于我们make -j4的多线程控制）， make-kpkg就是kernel-package提供的编译工具，--initrd参数是说明在生成的image包里有initrd
@@ -41,15 +55,21 @@ dpkg --build      /home//kernel/linux-3.4.33/debian/linux-image-3.4.33 ..
 dpkg-deb: building package `linux-image-3.4.33' in `../linux-image-3.4.33_3.4.33-10.00.Custom_i386.deb'.
 make[2]: Leaving directory `/home/kernel/linux-3.4.33'
 make[1]: Leaving directory `/home/kernel/linux-3.4.33'
+```
+
 从上面的信息可以看出，我们的make-kpkg生成了一个deb文件，
 其实这就是我们编译好的内核，放在当前内核文件夹的上层目录。
+
+```
 #cd ..
-linux-image-3.4.33_3.4.33-10.00.Custom_i386.deb       linux-3.4.33    linux-3.4.33.tar.xz
+linux-image-3.4.33_3.4.33-10.00.Custom_i386.deb    linux-3.4.33    linux-3.4.33.tar.xz
+```
 
 到此我们的编译工作结束，我们可以使用dpkg 安装我们刚编译好的目录！
 当然……如果你的编译的内核对其他机器也适用，你可以拷贝这个deb文件到
 其他机器上直接安装使用。这是神器的一大优势。
 
+```
 #sudo dpkg -i linux-image-3.4.33_3.4.33-10.00.Custom_i386.deb    // dpkg  -i 安装生成的deb格式image文件
 [sudo] password for long: 
 Selecting previously unselected package linux-image-3.4.33.
@@ -74,6 +94,8 @@ Found Windows 7 (loader) on /dev/sda1
 Found elementary OS Luna (0.2) on /dev/sda3
 done
 #
+```
+
 所以这个神器使得我们编译内核工作变得更加简单快捷。当然如果仅限于此还不能称之为神器！
 我们使用kernel-package编译内核最大的好处是我们可以使用  dpkg -r 删除我们编译的内核。
 如上： 安装我们使用的是 sudo dpkg -i linux-image-3.4.33_3.4.33-10.00.Custom_i386.deb

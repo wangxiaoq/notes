@@ -1,5 +1,5 @@
-Kernel Probes(kprobes)
-======================
+###Kernel Probes(kprobes)
+
 1.	Concepts: kprobes, jprobes, and return probes
 
 	kprobes允许动态的插入到任何内核例程中，收集一些debug和性能
@@ -35,16 +35,19 @@ Kernel Probes(kprobes)
 	行；首先会执行pre_handler函数，把kprobe结构体的地址和保存的寄存
 	器传递给该函数；
 
+```
 	Next, Kprobes single-steps its copy of the probed instruction.
 	(It would be simpler to single-step the actual instruction in place,
 	but then Kprobes would have to temporarily remove the breakpoint
 	instruction.  This would open a small time window when another CPU
 	could sail right past the probepoint.)
+```
 
 	在指令被singgle-step之后，Kprobes开始执行"post_handler"，这是和kprobe
 	相关的。之后继续沿着kprobe之后的指令开始执行。
 
 	1.2 jprobe是如何工作的？
+	
 	jprobe是利用kprobe在函数的入口处实现的；通过简单映射原理可以无
 	缝的访问被探测函数的参数；jprobe的处理函数必须和被探测函数有着
 	相同的签名（即函数原型必须一致），并且在处理函数必须以调用jprobe_return

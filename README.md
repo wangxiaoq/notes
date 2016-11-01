@@ -1,7 +1,7 @@
 # 我的Linux学习笔记
 *Wang Xiaoqiang <wang_xiaoq@126.com>*
 
-为该文档包含了作者在学习Linux过程中的一些总结，以前是以文本形式存储在该仓库中。
+该文档包含了作者在学习Linux过程中的一些总结，以前是以文本形式存储在该仓库中。
 现在使用markdown语法进行整理，以方便查阅。同时对一些意义不大的笔记进行删除和修改。
 
 ## Linux的使用
@@ -17,7 +17,6 @@
 9. [Linux中有用的命令总结](linux_use/useful-command.mkd)
 10. [VIM编辑器的使用](linux_use/vim-use.md)
 11. [wheel组和staff组](linux_use/wheel-staff-group.md)
-
 
 ## Shell脚本
 1. [数值计算](shell/arithmatic.md)
@@ -35,3 +34,23 @@
 4. [交换两个变量](c/swap-two-variable.md)
 
 ## Linux内核笔记
+1. [CENTOS编译内核](kernel/centos-compile-kernel.md)
+2. [清除编译内核生成的文件](kernel/clean-kernel-compiled-file.md)
+3. [使用kernel-package编译内核imgage包](kernel/compile-kernel.md)
+4. [编译内核之后，发现网卡不能使用解决方法](kernel/compile_kernel_problem.md)
+5. [Compound Page](kernel/compound-page.md)
+6. [/dev/mem](kernel/dev-mem.md)
+7. [ftrace](kernel/ftrace.md)
+8. [hrt(High Timer Resolution)](kernel/hrtimer.md)
+9. [HWPoison](kernel/hwpoison.md)
+10. [Kernel Thread](kernel/kernel-thread.md)
+11. [Kprobes](kernel/kprobes.md)
+12. [Kernel Samepage Merging](kernel/ksm.md)
+13. [Machine Check Exception](kernel/machine.md)
+14. [inittab手册](kernel/man-5-inittab.md)
+15. [init手册](kernel/man-8-init.md)
+16. [NUMA](kernel/numa.md)
+17. [pagemap](kernel/pagemap.md)
+18. [如何阅读源代码](kernel/read-source-code.md)
+19. [soft dirty PTES](kernel/soft-dirty.md)
+20. [工作队列](kernel/workqueue.md)

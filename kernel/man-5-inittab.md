@@ -1,7 +1,5 @@
-man 5 inittab
+###man 5 inittab
 
-王小强	2015.11,29
-==================
 	这篇文档基本是从'man 5 inittab'中翻译过来的。
 
 INITTAB(5)

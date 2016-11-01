@@ -1,5 +1,5 @@
-Compound Page
-=============
+### Compound Page
+
 
      复合页（Compound Page）就是将物理上连续的两个或多个页看成一个
      独立的大页，它可以用来创建hugetlbfs中使用的大页（hugepage），
@@ -48,12 +48,12 @@ Compound Page
      使用复合页的最经典的一个例子就是THP（transparent huge page），
      另外一些驱动使用复合页来方便缓存的管理。
 
-ref
-===
-1. https://lwn.net/Articles/619514/
+*ref*
+
+*1. https://lwn.net/Articles/619514/*
 
 问题
-===
+
 1. page cache?
 2. hugetlbfs?
 3. transparent huge page?

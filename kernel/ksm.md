@@ -1,5 +1,4 @@
-KSM
-===
+###KSM
 
 1.   KSM全称kernel samepage merging，又叫kernel shared memory。
      它是一种通过消除重复来节省内存的方式，通过CONFIG_KSM=y使能。
@@ -106,9 +105,12 @@ KSM
     在物理内存为16GB的主机上可以运行50个内存为1GB的Win XP虚拟机。[4]
 
     
-ref
-===
-1. https://www.kernel.org/doc/Documentation/vm/ksm.txt
-2. https://lwn.net/Articles/306704/
-3. https://lwn.net/Articles/330589/
-4. https://en.wikipedia.org/wiki/Kernel_same-page_merging
+*ref*
+
+*1. https://www.kernel.org/doc/Documentation/vm/ksm.txt*
+
+*2. https://lwn.net/Articles/306704/*
+
+*3. https://lwn.net/Articles/330589/*
+
+*4. https://en.wikipedia.org/wiki/Kernel_same-page_merging*
