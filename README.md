@@ -17,6 +17,7 @@
 9. [Linux中有用的命令总结](linux_use/useful-command.mkd)
 10. [VIM编辑器的使用](linux_use/vim-use.md)
 11. [wheel组和staff组](linux_use/wheel-staff-group.md)
+12. [LFS Systemd 7.7 软件包及源码下载链接整理](linux_use/lfs-wget-list-7.7.md)
 
 ## Shell脚本
 1. [数值计算](shell/arithmatic.md)
