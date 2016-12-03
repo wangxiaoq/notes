@@ -34,6 +34,9 @@
 3. [全局变量与静态变量](c/static_global_variable.md)
 4. [交换两个变量](c/swap-two-variable.md)
 
+## 程序员的自我修养笔记
+1. [编译和链接](programmer_culture/compilation-and-linking.mkd)
+
 ## Linux内核笔记
 1. [CENTOS编译内核](kernel/centos-compile-kernel.md)
 2. [清除编译内核生成的文件](kernel/clean-kernel-compiled-file.md)
