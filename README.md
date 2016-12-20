@@ -58,3 +58,4 @@
 18. [如何阅读源代码](kernel/read-source-code.md)
 19. [soft dirty PTES](kernel/soft-dirty.md)
 20. [工作队列](kernel/workqueue.md)
+21. [huge page](kernel/hugepage.md)
