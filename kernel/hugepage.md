@@ -17,7 +17,7 @@ TLB miss。TLB miss会影响计算机系统的性能，为了减少TLB miss的�
 TLB reach - 通过TLB所能访问的内存总量，可以使用下面的公式进行
 计算：
 
-*TLB reach = Page Table Entry Number \* Page Size*
+`TLB reach = Page Table Entry Number * Page Size`
 
 提升TLB reach可以降低TLB miss发生的频率，因此可以提升TLB中页表项的数
 目或者是页的大小，根据实际情况，提升页的大小是可行的，因此将多个普通
