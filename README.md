@@ -34,6 +34,7 @@
 3. [全局变量与静态变量](c/static_global_variable.md)
 4. [交换两个变量](c/swap-two-variable.md)
 5. [Linux下检测C和C++内存泄漏](c/detect-memory-leak.md)
+6. [listen函数backlog参数介绍](c/listen-backlog.md)
 
 ## 程序员的自我修养笔记
 1. [编译和链接](programmer_culture/compilation-and-linking.mkd)
